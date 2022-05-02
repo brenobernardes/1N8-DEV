@@ -47,8 +47,27 @@
     color: var(--white);
 }
 
-.mb-3 Form.Control {
+.mb-3 .formInput {
     border: var(--light-blue);
+    border-radius: 0;
+    border-bottom: solid 1px var(--white);
     background-color: var(--light-blue);
     color: var(--white);
+}
+
+.mb-3 .formInput::placeholder {
+    color: var(--white);
+}
+
+.customButton {
+    transition: .5s;
+    color: var(--white);
+    cursor: pointer;
+    margin-left: 30%;
+}
+
+.customButton:hover {
+    transition: .5s;
+    background-color: var(--white);
+    color: var(--dark-blue);
 }

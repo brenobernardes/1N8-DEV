@@ -11,25 +11,25 @@ export default function Cadastro () {
                     
                     <Form.Group className="mb-3" controlId="formGroupName">
                         <Form.Label>Nome</Form.Label>
-                        <Form.Control type="text" placeholder="Fulano Belatrano de Oliveira da Silva" />
+                        <Form.Control className="formInput" type="text" placeholder="Fulano Belatrano de Oliveira da Silva" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formGroupEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="fulanobos@gmail.com" />
+                        <Form.Control className="formInput" type="email" placeholder="fulanobos@gmail.com" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formGroupBirth">
                         <Form.Label>Nascimento</Form.Label>
-                        <Form.Control type="date" placeholder="13/10/1995" />
+                        <Form.Control className="formInput" type="date" placeholder="13/10/1995" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formGroupPhone">
                         <Form.Label>Telefone</Form.Label>
-                        <Form.Control type="number" placeholder="(31) 9 9666-1111" />
+                        <Form.Control className="formInput" type="number" placeholder="(31) 9 9666-1111" />
                     </Form.Group>
 
-                    <Button />
+                    <Button className="customButton">Cadastrar</Button>
                 </Form>
         </section>
     )
