@@ -1,0 +1,54 @@
+:root {
+    --white: #ffffff;
+    --light-blue: #29abe2;
+    --dark-blue: #012d51;
+    --gray: #808080;
+}
+
+@font-face {
+    font-family: "Helvetica Ultralight";
+    src: url("../../fonts/HelveticaUltraLt_0.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto Light";
+    src: url("../../fonts/Roboto-Light_0.ttf");
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: "Roboto Regular";
+    src: url("../../fonts/Roboto-Regular_0.ttf");
+    font-weight: normal;
+}
+
+.mainSection {
+    padding: 50px 0;
+    background-color: var(--light-blue);
+    display: flex;
+    justify-content: center;
+}
+
+.mainSection h2 {
+    font-size: 50px;
+    color: var(--white);
+    font-family: Roboto Light;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.mb-3 {
+    width: 50vw;
+}
+
+.mb-3 Label {
+    color: var(--white);
+}
+
+.mb-3 Form.Control {
+    border: var(--light-blue);
+    background-color: var(--light-blue);
+    color: var(--white);
+}

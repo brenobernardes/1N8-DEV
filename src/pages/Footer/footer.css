@@ -1,0 +1,16 @@
+:root {
+    --white: #ffffff;
+}
+
+
+.foot {
+    background-image: url("../../images/rodape-desktop.jpg");
+    background-size: 100vw 100vh;
+    height: 250px;
+    padding-top: 70px;
+}
+
+.foot p {
+    text-align: center;
+    color: var(--white);
+}
