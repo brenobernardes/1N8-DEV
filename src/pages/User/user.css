@@ -1,0 +1,29 @@
+:root {
+    --light-blue: #29abe2;
+}
+
+@font-face {
+    font-family: "Roboto Light";
+    src: url("../../fonts/Roboto-Light_0.ttf");
+    font-weight: lighter;
+}
+
+.userContent h2 {
+    font-family: Roboto Light;
+    font-size: 50px;
+    color: var(--light-blue);
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.userContent {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userContent Table {
+    width: 50vw;
+}
