@@ -24,13 +24,23 @@ db.connect((err) => {
     } else {
         console.log("Connected to database");
 
-        db.query("CREATE DATABASE IF NOT EXISTS user", function (err) {
+        const dbName = "user"
+
+        db.query(`CREATE DATABASE IF NOT EXISTS ${dbName}`, function (err) {
             if (err) throw err;
             console.log("Database created")
         })
 
-        db.query(`CREATE TABLE IF NOT EXISTS users (
-            id INT, 
+        db.query(`USE ${dbName}`, (err) => {
+            if(err) throw err;
+  
+            console.log("Using Database");
+        })
+
+        const dbTable = "users";
+
+        db.query(`CREATE TABLE IF NOT EXISTS ${dbTable} (
+            id INT AUTO_INCREMENT PRIMARY KEY, 
             name VARCHAR(255), 
             email VARCHAR(255), 
             birthDate DATE,
