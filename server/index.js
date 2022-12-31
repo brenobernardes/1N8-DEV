@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql2");
-// const cors = require("cors");
+const cors = require("cors");
 require("dotenv").config();
 
 const serverHost = process.env.host;
@@ -16,8 +16,6 @@ const db = mysql.createConnection({
     password: serverPassword
 });
 
-console.log(serverHost, serverPort, serverUser, serverPassword)
-
 db.connect((err) => {
     if(err) {
         console.log("Database conection failed");
@@ -28,13 +26,10 @@ db.connect((err) => {
 
         db.query(`CREATE DATABASE IF NOT EXISTS ${dbName}`, function (err) {
             if (err) throw err;
-            console.log("Database created")
         })
 
         db.query(`USE ${dbName}`, (err) => {
             if(err) throw err;
-  
-            console.log("Using Database");
         })
 
         const dbTable = "users";
@@ -47,23 +42,34 @@ db.connect((err) => {
             phone VARCHAR(255)
             )`, function (err) {
                 if (err) throw err;
-                console.log("Table created")
         })
     }
 });
 
 app.use(express.json());
+app.use(cors());
 
 app.post("/register", (req, res) => {
-    const name = req.body;
-    const email = req.body;
-    const birthDate = req.body;
-    const phone = req.body;
+    const name = req.body.name;
+    const email = req.body.email;
+    const birthDate = req.body.birthDate;
+    const phone = req.body.phone;
 
-    mysql = "INSERT INTO user ( name, email, birthDate, phone) VALUES ( ?, ?, ?, ? )";
-    db.query(mysql, [name, email, birthDate, phone], (err, result) => {
+    let saveDb = "INSERT INTO users (name, email, birthDate, phone) VALUES ( ?, ?, ?, ? )";
+    db.query(saveDb, [name, email, birthDate, phone], (err, result) => {
         if (err) res.send(err);
         res.send(result);
+    });
+});
+
+app.get("/return", (req, res) => {
+    let dbReturnData = "SELECT * FROM users";
+    db.query(dbReturnData, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
     });
 });
 
