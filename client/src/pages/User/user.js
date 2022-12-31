@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Table from 'react-bootstrap/Table';
+import axios from "axios";
 import './user.css';
 
 export default function User () {
-    let list = function () {
-        let userData = localStorage.getItem('userData');
-        return JSON.parse(userData);
-    }
+    const [list, setList] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:3001/return").then((res) => {
+            setList(res.data);
+        });
+    }, []);
+    
 
     return (
         <div className="userContent">
@@ -16,20 +21,22 @@ export default function User () {
             <Table striped bordered hover>
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Data de Nascimento</th>
                         <th>Telefone</th>
                     </tr>
                 </thead>
-                {list().map( function (userData, i) {
+                {list.map((val) => {
                     return (
-                        <tbody key={i}>
+                        <tbody>
                             <tr>
-                                <td>{userData.name}</td>
-                                <td>{userData.email}</td>
-                                <td>{userData.birthDate}</td>
-                                <td>{userData.phone}</td>
+                                <td>{val.id}</td>
+                                <td>{val.name}</td>
+                                <td>{val.email}</td>
+                                <td>{val.birthDate}</td>
+                                <td>{val.phone}</td>
                             </tr>
                         </tbody>                                
                     )

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import { Button } from '../../components/button/button.js'
 import './cadastro.css';
+import axios from "axios";
 
 export default function Cadastro () {
 
@@ -14,15 +15,13 @@ export default function Cadastro () {
     
     const onChangeInput = e => setUser ({...user, [e.target.name]: e.target.value})
 
-    const sendData = async e => {
-        e.preventDefault();
-        let userData = JSON.parse(localStorage.getItem('userData'));
-        if (userData == null) {
-            userData = [];
-        }
-
-        userData.push(user);
-        localStorage.setItem('userData', JSON.stringify(userData));
+    const sendData = () => {
+        axios.post("http://localhost:3001/register", {
+            name: user.name,
+            email: user.email,
+            birthDate: user.birthDate,
+            phone: user.phone
+        })
 
         setUser({
             name: "",
