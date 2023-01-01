@@ -29,7 +29,6 @@ export default function Cadastro () {
             birthDate: "",
             phone: ""
         })
-        console.log(user);
     }
 
     return (

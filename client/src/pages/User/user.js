@@ -11,8 +11,15 @@ export default function User () {
             setList(res.data);
         });
     }, []);
-    
 
+
+    // create delete data from database
+    const handleDelete = () => {
+        axios.delete(`http://localhost:3001/delete/${id}`).then(() => {
+            
+        })
+    }
+     
     return (
         <div className="userContent">
 
@@ -28,15 +35,16 @@ export default function User () {
                         <th>Telefone</th>
                     </tr>
                 </thead>
-                {list.map((val) => {
+                {list.map((props) => {
                     return (
-                        <tbody>
+                        <tbody key={props.id}>
                             <tr>
-                                <td>{val.id}</td>
-                                <td>{val.name}</td>
-                                <td>{val.email}</td>
-                                <td>{val.birthDate}</td>
-                                <td>{val.phone}</td>
+                                <td>{props.id}</td>
+                                <td>{props.name}</td>
+                                <td>{props.email}</td>
+                                <td>{props.birthDate}</td>
+                                <td>{props.phone}</td>
+                                <td><button>Editar</button><button onClick={handleDelete}>Excluir</button></td>
                             </tr>
                         </tbody>                                
                     )
