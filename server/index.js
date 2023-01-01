@@ -73,6 +73,18 @@ app.get("/return", (req, res) => {
     });
 });
 
+app.delete("/delete/:id", (req, res) => {
+    const id = req.params.id;
+    let dbDelete = "DELETE FROM users WHERE id = ?";
+    db.query(dbDelete, id, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 app.listen(3001, () => {
     console.log("server rodando")
 });
