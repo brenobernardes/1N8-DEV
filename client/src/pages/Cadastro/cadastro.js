@@ -10,8 +10,21 @@ export default function Cadastro () {
         name: "",
         email: "",
         birthDate: "",
-        phone: ""
     });
+
+    const [phone, setPhone] = useState({
+        phone:""
+    });
+
+    const validatePhone = e => {
+        const regexPhone = /^([0-9]{2})([0-9]{4,5})([0-9]{4})$/;
+        const limit = 11;
+
+        var str = e.target.value.replace(/[^0-9]/g, "").slice(0, limit)
+        const result = str.replace(regexPhone, "($1) $2-$3");
+        
+        setPhone(result);
+    }
     
     const onChangeInput = e => setUser ({...user, [e.target.name]: e.target.value})
 
@@ -20,15 +33,20 @@ export default function Cadastro () {
             name: user.name,
             email: user.email,
             birthDate: user.birthDate,
-            phone: user.phone
+            phone: phone
         })
 
         setUser({
             name: "",
             email: "",
-            birthDate: "",
+            birthDate: ""
+        })
+
+        setPhone({
             phone: ""
         })
+
+        window.location.reload();
     }
 
     return (
@@ -74,10 +92,10 @@ export default function Cadastro () {
                         <Form.Label>Telefone</Form.Label>
                         <Form.Control name="phone" 
                         className="formInput" 
-                        type="number" 
+                        type="text" 
                         placeholder="(31) 9 9666-1111" 
-                        onChange={onChangeInput} 
-                        value={user.phone} 
+                        value={phone} 
+                        onChange={validatePhone} 
                         required />
                     </Form.Group>
 

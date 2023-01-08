@@ -27,3 +27,9 @@
 .userContent Table {
     width: 50vw;
 }
+
+.buttonDelete:hover {
+    transition: .3s;
+    color: red;
+    cursor: pointer;
+}
