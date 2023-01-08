@@ -11,7 +11,7 @@ git clone https://github.com/brenobernardes/1N8-DEV.git
 
 #### Ache o projeto localmente
 ```bash
-cd in8-dev
+cd 1n8-dev
 ```
 
 #### Instale as dependências
